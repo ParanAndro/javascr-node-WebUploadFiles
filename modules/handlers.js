@@ -1,17 +1,20 @@
 var fs = require('fs'),
 	formidable = require('formidable'),
 	mv = require('mv'),
-	urlFile;
+	imgName;
 
 exports.upload = function(request, response) {
 	console.log("Rozpoczynam obsługę żądania upload.");
 	var form = new formidable.IncomingForm();
 	form.parse(request, function(error, fields, files) {
-		mv(files.upload.path, 'obrazek.jpg', function (err) {
+		imgName = 'files/' + files.upload.name;
+		imgName = imgName.toString();
+		console.log(files);
+		mv(files.upload.path, imgName, function (err) {
 			if(err) throw error;
 		});
 		response.writeHead(200, {"Content-Type": "text/html"});
-		response.write("received image:<br/>");
+		response.write(imgName + ":<br/>");
 		response.write("<img src='/show' />");
 		response.end();
 	});
@@ -33,7 +36,7 @@ exports.error = function(request, response) {
 };
 
 exports.show = function(request, response) {
-	fs.readFile('obrazek.jpg', 'binary', function(error, file) {
+	fs.readFile(imgName, 'binary', function(error, file) {
 		response.writeHead(200, {'Content-Type': 'image/jpg'});
 		response.write(file, 'binary');
 		response.end();
