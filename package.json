@@ -1,0 +1,26 @@
+{
+  "name": "javascr-node-WebUploadFiles",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ParanAndro/javascr-node-WebUploadFiles.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ParanAndro/javascr-node-WebUploadFiles/issues"
+  },
+  "homepage": "https://github.com/ParanAndro/javascr-node-WebUploadFiles#readme",
+  "dependencies": {
+    "colors": "^1.1.2",
+    "formidable": "^1.2.0",
+    "mv": "^2.1.1"
+  }
+}
